@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import HomePage from './pages/HomePage';
+const HomePage = lazy(() => import('./pages/HomePage'));
 
 export interface RoutesProps {}
 
 export const Routes: React.FC<RoutesProps> = () => (
-  <Switch>
-    <Route exact path="/" component={HomePage} />
-  </Switch>
+  <Suspense fallback={<div>Loading...</div>}>
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+    </Switch>
+  </Suspense>
 );
