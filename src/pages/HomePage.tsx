@@ -16,7 +16,7 @@ export const HomePage: React.FC<HomePageProps> = ({}) => {
 
   useEffect(() => {
     setAuthorization(
-      `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InMwNTU4MTUxIn0.DDNBIrZ4P2zptZ10z8S1CJo94ihVFgL93qKk247H6WE`,
+      'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6InMwNTU4MTUxIn0.DDNBIrZ4P2zptZ10z8S1CJo94ihVFgL93qKk247H6WE',
     );
     dispatch(getInstancesStart());
   }, [dispatch]);
