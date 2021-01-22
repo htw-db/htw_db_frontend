@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-const HomePage = lazy(() => import('./pages/HomePage'));
+const HomePage = lazy(() => import('./views/HomePage'));
 
 export interface RoutesProps {}
 

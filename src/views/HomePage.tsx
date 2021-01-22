@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getInstancesStart } from '../slices/instances';
 import { selectInstances } from '../selectors/instances';
 import { setAuthorization } from '../utils/axiosConfig';
+import { AppLayout } from '../layout/AppLayout';
 
 export interface HomePageProps {}
 
@@ -21,7 +22,11 @@ export const HomePage: React.FC<HomePageProps> = ({}) => {
     dispatch(getInstancesStart());
   }, [dispatch]);
 
-  return <>HomePage</>;
+  return (
+    <AppLayout>
+      <div className="dashboard-wrapper">hello</div>
+    </AppLayout>
+  );
 };
 
 export default HomePage;
