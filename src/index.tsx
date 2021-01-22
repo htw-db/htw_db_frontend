@@ -7,6 +7,10 @@ import reportWebVitals from './reportWebVitals';
 import { Routes } from './routes';
 import store from './store';
 
+import './assets/css/vendor/bootstrap.min.css';
+import './assets/css/vendor/bootstrap.rtl.only.min.css';
+import './assets/css/sass/themes/gogo.light.greenlime.scss';
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
