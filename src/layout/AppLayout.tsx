@@ -9,7 +9,7 @@ export interface AppLayoutProps {
   children?: React.ReactNode;
 }
 
-export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
+const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   const { containerClassnames } = useSelector(selectMenu);
   return (
     <>
@@ -23,3 +23,5 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
     </>
   );
 };
+
+export default AppLayout;
