@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 const ViewApp = React.lazy(() => import('./views/app'));
+const ViewUser = React.lazy(() => import('./views/user'));
 
 const App: React.FC = () => (
   <div className="h-100">
@@ -10,6 +11,7 @@ const App: React.FC = () => (
         <Switch>
           <Redirect exact from="/" to="app" />
           <Route path="/app" render={(props) => <ViewApp {...props} />} />
+          <Route path="/user" render={(props) => <ViewUser {...props} />} />
           <Redirect to="/error" />
         </Switch>
       </Router>
