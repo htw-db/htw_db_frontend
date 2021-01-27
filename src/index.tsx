@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import reportWebVitals from './reportWebVitals';
-import { Routes } from './routes';
 import store from './store';
 
 import './assets/css/vendor/bootstrap.min.css';
 import './assets/css/vendor/bootstrap.rtl.only.min.css';
 import './assets/css/sass/themes/gogo.light.greenlime.scss';
+import 'react-perfect-scrollbar/dist/css/styles.css';
+
+const App = React.lazy(() => import('./App'));
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
-        <Routes />
-      </Router>
+      <Suspense fallback={<div className="loading" />}>
+        <App />
+      </Suspense>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
