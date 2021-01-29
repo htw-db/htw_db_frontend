@@ -56,9 +56,17 @@ const AuthSlice = createSlice({
       setAuthorization('');
       state.isLoading = false;
     },
+    logout(state) {
+      state.isLoading = true;
+      localStorage.removeItem('token');
+      setAuthorization('');
+      state.token = undefined;
+      state.profile = undefined;
+      state.isLoading = false;
+    },
   },
 });
 
-export const { loginStart, loginSuccess, loginFailed } = AuthSlice.actions;
+export const { loginStart, loginSuccess, loginFailed, logout } = AuthSlice.actions;
 
 export default AuthSlice.reducer;
