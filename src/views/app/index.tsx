@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Redirect, Route, RouteComponentProps, Switch } from 'react-router-dom';
-import { AppLayout } from '../../layout/AppLayout';
+import AppLayout from '../../layout/AppLayout';
 
 const Databases = React.lazy(() => import('./databases'));
 const Docs = React.lazy(() => import('./docs'));
