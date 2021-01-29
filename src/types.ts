@@ -14,9 +14,19 @@ export interface SubMenuItemInterface {
   to: string;
 }
 
-// An instance is a database
+// General types
 export interface InstanceInterface {
   id: number;
   name: string;
   personId: number;
+}
+
+export interface ProfileInterface {
+  username: string;
+}
+
+// Authentification
+export interface LdapCredentialsInterface {
+  username: string;
+  password: string;
 }
