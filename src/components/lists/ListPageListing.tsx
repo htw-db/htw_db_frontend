@@ -3,6 +3,7 @@ import { Card, CustomInput, Row } from 'reactstrap';
 
 import { InstanceInterface } from '../../types';
 import { Colxx } from '../common/CustomBootstrap';
+import BadgeStatus from '../common/BadgeStatus';
 
 export interface Props {
   instances: InstanceInterface[];
@@ -21,7 +22,12 @@ const ListPageListing: React.FC<Props> = ({ instances, selectedInstances, onTogg
           {' '}
           <div className="pl-2 d-flex flex-grow-1 min-width-zero">
             <div className="card-body align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero align-items-lg-center">
-              {instance.name}
+              <div className="w-40 w-sm-100">
+                <p className="list-item-heading mb-1 truncate">{instance.name}</p>
+              </div>
+              <div className="w-15 w-sm-100">
+                <BadgeStatus status={instance.status} />
+              </div>
             </div>
             <div className="custom-control custom-checkbox pl-1 align-self-center pr-4">
               <CustomInput
