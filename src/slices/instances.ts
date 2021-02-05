@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { InstanceInterface } from '../types';
+import { AddInstanceInterface, InstanceInterface, InstanceStatus } from '../types';
 
 interface InstanceState {
   instances: InstanceInterface[];
@@ -28,9 +28,35 @@ const InstanceSlice = createSlice({
       state.error = action.payload;
       state.isLoading = false;
     },
+    addInstanceStart(state, { payload }: PayloadAction<AddInstanceInterface>) {
+      state.error = undefined;
+      state.instances = [
+        ...state.instances,
+        { ...payload, id: NaN, personId: NaN, status: InstanceStatus.LOADING },
+      ];
+    },
+    addInstanceSuccess(state, { payload }: PayloadAction<InstanceInterface>) {
+      state.instances = [
+        ...state.instances.filter((instance) => instance.name !== payload.name),
+        payload,
+      ];
+      state.error = undefined;
+      state.isLoading = false;
+    },
+    addInstanceFailed(state, action: PayloadAction<string>) {
+      state.error = action.payload;
+      state.isLoading = false;
+    },
   },
 });
 
-export const { getInstancesStart, getInstancesSuccess, getInstancesFailed } = InstanceSlice.actions;
+export const {
+  getInstancesStart,
+  getInstancesSuccess,
+  getInstancesFailed,
+  addInstanceStart,
+  addInstanceSuccess,
+  addInstanceFailed,
+} = InstanceSlice.actions;
 
 export default InstanceSlice.reducer;
