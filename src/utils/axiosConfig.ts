@@ -5,7 +5,7 @@ const baseURL = REACT_APP_BASE_URL || '';
 
 export const axiosInstance = axios.create({
   baseURL,
-  timeout: 5000,
+  timeout: 20000,
   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
