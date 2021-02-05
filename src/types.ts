@@ -19,6 +19,12 @@ export interface InstanceInterface {
   id: number;
   name: string;
   personId: number;
+  status?: InstanceStatus;
+}
+
+export enum InstanceStatus {
+  RUNNING = 'Running',
+  LOADING = 'Loading',
 }
 
 export type AddInstanceInterface = Pick<InstanceInterface, 'name'>;
