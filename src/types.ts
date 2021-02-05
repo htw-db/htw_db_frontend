@@ -21,6 +21,8 @@ export interface InstanceInterface {
   personId: number;
 }
 
+export type AddInstanceInterface = Pick<InstanceInterface, 'name'>;
+
 export interface ProfileInterface {
   username: string;
 }
