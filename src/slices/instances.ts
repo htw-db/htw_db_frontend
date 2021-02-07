@@ -37,7 +37,10 @@ const InstanceSlice = createSlice({
     },
     addInstanceSuccess(state, { payload }: PayloadAction<InstanceInterface>) {
       state.instances = [
-        ...state.instances.filter((instance) => instance.name !== payload.name),
+        ...state.instances.filter(
+          (instance) =>
+            instance.prefix === undefined && `${instance.prefix}${instance.name}` !== payload.name,
+        ),
         payload,
       ];
       state.error = undefined;

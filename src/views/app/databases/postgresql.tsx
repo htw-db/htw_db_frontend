@@ -51,7 +51,7 @@ const PostgreSQL: React.FC<PostgreSQLProps> = () => {
   };
 
   const handleOnSubmit = (instance: AddInstanceInterface) => {
-    dispatch(addInstanceStart({ ...instance, name: `${prefix}${instance.name}` }));
+    dispatch(addInstanceStart({ ...instance, name: instance.name, prefix }));
     setIsModalOpen(false);
   };
 
