@@ -19,6 +19,7 @@ export interface InstanceInterface {
   id: number;
   name: string;
   personId: number;
+  prefix?: string;
   status?: InstanceStatus;
 }
 
@@ -27,7 +28,7 @@ export enum InstanceStatus {
   LOADING = 'Loading',
 }
 
-export type AddInstanceInterface = Pick<InstanceInterface, 'name'>;
+export type AddInstanceInterface = Pick<InstanceInterface, 'name' | 'prefix'>;
 
 export interface ProfileInterface {
   username: string;
