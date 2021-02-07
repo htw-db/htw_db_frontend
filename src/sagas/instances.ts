@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeEvery } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 import { AddInstanceInterface, InstanceInterface } from '../types';
@@ -33,6 +33,6 @@ function* handleAddInstance(action: PayloadAction<AddInstanceInterface>) {
 }
 
 export function* instancesSaga() {
-  yield takeLatest(getInstancesStart.type, handleGetInstances);
-  yield takeLatest(addInstanceStart.type, handleAddInstance);
+  yield takeEvery(getInstancesStart.type, handleGetInstances);
+  yield takeEvery(addInstanceStart.type, handleAddInstance);
 }
