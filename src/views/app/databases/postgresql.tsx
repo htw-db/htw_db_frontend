@@ -57,7 +57,10 @@ const PostgreSQL: React.FC<PostgreSQLProps> = () => {
   const handleOnDelete = () => {
     selectedInstances.forEach((instanceId) => {
       const instance = instances.find((value) => value.id === instanceId);
-      if (instance && instance.status === InstanceStatus.RUNNING) {
+      if (
+        instance &&
+        (instance.status === undefined || instance.status === InstanceStatus.RUNNING)
+      ) {
         dispatch(deleteInstanceStart(instanceId));
       }
     });
