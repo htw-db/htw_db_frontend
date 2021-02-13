@@ -26,6 +26,8 @@ export interface InstanceInterface {
 export enum InstanceStatus {
   RUNNING = 'Running',
   LOADING = 'Loading',
+  DELETING = 'Deleting',
+  FAILED = 'Failed',
 }
 
 export type AddInstanceInterface = Pick<InstanceInterface, 'name' | 'prefix'>;

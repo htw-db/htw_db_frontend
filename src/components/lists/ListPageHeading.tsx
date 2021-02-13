@@ -17,6 +17,7 @@ export interface Props {
   selectedInstancesLength: number;
   onOpenModal: () => void;
   onSelectAll: () => void;
+  onDelete: () => void;
 }
 
 const ListPageHeading: React.FC<Props> = ({
@@ -25,6 +26,7 @@ const ListPageHeading: React.FC<Props> = ({
   selectedInstancesLength,
   onOpenModal,
   onSelectAll,
+  onDelete,
 }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   return (
@@ -59,7 +61,7 @@ const ListPageHeading: React.FC<Props> = ({
                 </div>
                 <DropdownToggle caret color="primary" className="dropdown-toggle-split btn-lg" />
                 <DropdownMenu right>
-                  <DropdownItem>Delete</DropdownItem>
+                  <DropdownItem onClick={onDelete}>Delete</DropdownItem>
                 </DropdownMenu>
               </ButtonDropdown>
             </div>

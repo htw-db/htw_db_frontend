@@ -14,6 +14,7 @@ const common: Omit<Props, 'instancesLength' | 'selectedInstancesLength'> = {
   heading: 'Heading',
   onOpenModal: () => undefined,
   onSelectAll: () => undefined,
+  onDelete: () => undefined,
 };
 
 export const AllSelected = Template.bind({});

@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getInstancesStart, addInstanceStart } from '../../../slices/instances';
+import {
+  getInstancesStart,
+  addInstanceStart,
+  deleteInstanceStart,
+} from '../../../slices/instances';
 import { selectInstances } from '../../../selectors/instances';
 import { selectAuth } from '../../../selectors/auth';
 
 import AddNewModal from '../../../components/lists/AddNewModal';
 import ListPageHeading from '../../../components/lists/ListPageHeading';
 import ListPageListing from '../../../components/lists/ListPageListing';
-import { AddInstanceInterface } from '../../../types';
+import { AddInstanceInterface, InstanceStatus } from '../../../types';
 
 interface PostgreSQLProps {}
 
@@ -50,6 +54,15 @@ const PostgreSQL: React.FC<PostgreSQLProps> = () => {
     }
   };
 
+  const handleOnDelete = () => {
+    selectedInstances.forEach((instanceId) => {
+      const instance = instances.find((value) => value.id === instanceId);
+      if (instance && instance.status === InstanceStatus.RUNNING) {
+        dispatch(deleteInstanceStart(instanceId));
+      }
+    });
+  };
+
   const handleOnSubmit = (instance: AddInstanceInterface) => {
     dispatch(addInstanceStart({ ...instance, name: instance.name, prefix }));
     setIsModalOpen(false);
@@ -63,6 +76,7 @@ const PostgreSQL: React.FC<PostgreSQLProps> = () => {
         selectedInstancesLength={selectedInstances.length}
         onOpenModal={openModal}
         onSelectAll={handleOnSelectAll}
+        onDelete={handleOnDelete}
       />
       <AddNewModal
         isOpen={isModalOpen}
