@@ -16,6 +16,7 @@ const restoreInitialSate = (): AuthState => {
   if (token) {
     const profile = decodeJwt(token);
     if (profile) {
+      setAuthorization(token);
       return { isLoading: false, token, profile };
     }
   }

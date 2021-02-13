@@ -19,7 +19,18 @@ export interface InstanceInterface {
   id: number;
   name: string;
   personId: number;
+  prefix?: string;
+  status?: InstanceStatus;
 }
+
+export enum InstanceStatus {
+  RUNNING = 'Running',
+  LOADING = 'Loading',
+  DELETING = 'Deleting',
+  FAILED = 'Failed',
+}
+
+export type AddInstanceInterface = Pick<InstanceInterface, 'name' | 'prefix'>;
 
 export interface ProfileInterface {
   username: string;

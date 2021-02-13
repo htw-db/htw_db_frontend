@@ -5,7 +5,7 @@ const baseURL = REACT_APP_BASE_URL || '';
 
 export const axiosInstance = axios.create({
   baseURL,
-  timeout: 5000,
+  timeout: 20000,
   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
@@ -14,7 +14,7 @@ export const axiosInstance = axios.create({
 
 export const setAuthorization = (authToken: string) => {
   if (authToken) {
-    axiosInstance.defaults.headers.common.Authorization = authToken;
+    axiosInstance.defaults.headers.common.Authorization = `Bearer ${authToken}`;
   } else {
     delete axiosInstance.defaults.headers.common.Authorization;
   }
