@@ -58,6 +58,9 @@ const LoginForm: React.FC<Props> = ({ loading, error, onSubmit }) => {
             )}
           </FormGroup>
           <div className="d-flex justify-content-between align-items-center">
+            <a href="https://www.htw-berlin.de/impressum/">Impressum</a>
+            <a href="https://www.htw-berlin.de/datenschutz/">Datenschutz</a>
+
             <Button
               type="submit"
               color={error ? 'warning' : 'primary'}

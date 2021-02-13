@@ -9,7 +9,7 @@ export interface Props {
 
 const BadgeStatus: React.FC<Props> = ({ status }) => {
   let color = '';
-  if (status === undefined || InstanceStatus.RUNNING) {
+  if (status === undefined || status === InstanceStatus.RUNNING) {
     color = 'success';
   } else {
     color = 'info';
