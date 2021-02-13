@@ -45,7 +45,7 @@ const TopNav: React.FC<Props> = () => {
             <DropdownToggle className="p-0" color="empty">
               <span className="name mr-1">{profile ? profile.username : ''}</span>
               <span>
-                <img alt="Profile" src="/assets/img/profiles/l-1.jpg" />
+                <img alt="Profile" src="/assets/img/profiles/doge.jpeg" />
               </span>
             </DropdownToggle>
             <DropdownMenu className="mt-3" right>
