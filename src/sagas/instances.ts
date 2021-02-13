@@ -2,7 +2,7 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 import { AddInstanceInterface, InstanceInterface } from '../types';
-import { addInstance, getInstances } from '../api/instances';
+import { addInstance, getInstances, deleteInstance } from '../api/instances';
 import {
   getInstancesStart,
   getInstancesSuccess,
@@ -10,6 +10,9 @@ import {
   addInstanceStart,
   addInstanceSuccess,
   addInstanceFailed,
+  deleteInstanceStart,
+  deleteInstanceSuccess,
+  deleteInstanceFailed,
 } from '../slices/instances';
 
 function* handleGetInstances() {
@@ -32,7 +35,17 @@ function* handleAddInstance(action: PayloadAction<AddInstanceInterface>) {
   }
 }
 
+function* handleDeleteInstance({ payload }: PayloadAction<number>) {
+  try {
+    yield call(deleteInstance, payload);
+    yield put(deleteInstanceSuccess(payload));
+  } catch (error) {
+    yield put(deleteInstanceFailed(error.toString()));
+  }
+}
+
 export function* instancesSaga() {
   yield takeEvery(getInstancesStart.type, handleGetInstances);
   yield takeEvery(addInstanceStart.type, handleAddInstance);
+  yield takeEvery(deleteInstanceStart.type, handleDeleteInstance);
 }

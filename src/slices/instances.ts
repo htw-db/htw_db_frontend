@@ -50,6 +50,19 @@ const InstanceSlice = createSlice({
       state.error = action.payload;
       state.isLoading = false;
     },
+    deleteInstanceStart(state, { payload }: PayloadAction<number>) {
+      state.isLoading = true;
+      state.error = undefined;
+      state.instances = state.instances.filter((instance) => instance.id !== payload);
+      state.isLoading = false;
+    },
+    deleteInstanceSuccess(state, { payload }: PayloadAction<number>) {
+      state.isLoading = false;
+    },
+    deleteInstanceFailed(state, action: PayloadAction<string>) {
+      state.error = action.payload;
+      state.isLoading = false;
+    },
   },
 });
 
@@ -60,6 +73,9 @@ export const {
   addInstanceStart,
   addInstanceSuccess,
   addInstanceFailed,
+  deleteInstanceStart,
+  deleteInstanceSuccess,
+  deleteInstanceFailed,
 } = InstanceSlice.actions;
 
 export default InstanceSlice.reducer;
