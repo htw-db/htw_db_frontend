@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { selectMenu } from '../selectors/menu';
 import TopNav from '../containers/navs/Topnav';
 import Sidebar from '../containers/navs/Sidebar';
+import Footer from '../components/navs/Footer';
 
 export interface AppLayoutProps {
   children?: React.ReactNode;
@@ -20,6 +21,7 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
           <div className="container-fluid">{children}</div>
         </main>
       </div>
+      <Footer />
     </>
   );
 };
