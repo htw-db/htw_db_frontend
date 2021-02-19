@@ -10,7 +10,7 @@ export interface Props {
   selectedInstances: number[];
   username: string;
   databaseHostname: string;
-  baseURL: string;
+  phppgadminURL: string;
   onToggle: (id: number) => void;
 }
 
@@ -19,7 +19,7 @@ const ListPageListing: React.FC<Props> = ({
   selectedInstances,
   username,
   databaseHostname,
-  baseURL,
+  phppgadminURL,
   onToggle,
 }) => (
   <Row>
@@ -35,7 +35,7 @@ const ListPageListing: React.FC<Props> = ({
             <div className="card-body align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero align-items-lg-center">
               <div className="w-35 w-sm-100">
                 <p className="list-item-heading mb-1 truncate">
-                  <a href={`${baseURL}/phppgadmin/`} target="_blank" rel="noopener noreferrer">
+                  <a href={phppgadminURL} target="_blank" rel="noopener noreferrer">
                     {instance.prefix}
                     {instance.name}
                   </a>

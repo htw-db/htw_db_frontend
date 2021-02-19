@@ -17,8 +17,8 @@ import { AddInstanceInterface, InstanceStatus } from '../../../types';
 const { REACT_APP_DB_HOSTNAME } = process.env;
 const databaseHostname = REACT_APP_DB_HOSTNAME || '';
 
-const { REACT_APP_BASE_URL } = process.env;
-const baseURL = REACT_APP_BASE_URL || '';
+const { REACT_APP_PHPPGADMIN_URL } = process.env;
+const phppgadminURL = REACT_APP_PHPPGADMIN_URL || '';
 
 interface PostgreSQLProps {}
 
@@ -99,7 +99,7 @@ const PostgreSQL: React.FC<PostgreSQLProps> = () => {
         selectedInstances={selectedInstances}
         username={profile ? profile.username : ''}
         databaseHostname={databaseHostname}
-        baseURL={baseURL}
+        phppgadminURL={phppgadminURL}
         onToggle={handleOnToggle}
       />
     </>
