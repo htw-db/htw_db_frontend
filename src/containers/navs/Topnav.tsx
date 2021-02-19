@@ -35,10 +35,6 @@ const TopNav: React.FC<Props> = () => {
           <MenuIcon />
         </NavLink>
       </div>
-      <NavLink className="navbar-logo" to="/app">
-        <span className="logo d-none d-xs-block" />
-        <span className="logo-mobile d-block d-xs-none" />
-      </NavLink>
       <div className="navbar-right">
         <div className="user d-inline-block">
           <UncontrolledDropdown className="dropdown-menu-right">
