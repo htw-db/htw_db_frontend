@@ -9,7 +9,8 @@ export interface Props {
   instances: InstanceInterface[];
   selectedInstances: number[];
   username: string;
-  hostname: string;
+  databaseHostname: string;
+  baseURL: string;
   onToggle: (id: number) => void;
 }
 
@@ -17,7 +18,8 @@ const ListPageListing: React.FC<Props> = ({
   instances,
   selectedInstances,
   username,
-  hostname,
+  databaseHostname,
+  baseURL,
   onToggle,
 }) => (
   <Row>
@@ -33,13 +35,15 @@ const ListPageListing: React.FC<Props> = ({
             <div className="card-body align-self-center d-flex flex-column flex-lg-row justify-content-between min-width-zero align-items-lg-center">
               <div className="w-35 w-sm-100">
                 <p className="list-item-heading mb-1 truncate">
-                  {instance.prefix}
-                  {instance.name}
+                  <a href={`${baseURL}/phppgadmin/`} target="_blank" rel="noopener noreferrer">
+                    {instance.prefix}
+                    {instance.name}
+                  </a>
                 </p>
               </div>
               <p className="mb-1 text-muted text-small w-45 w-xs-100">
                 <Badge color="light" pill>
-                  psql -h {hostname} {instance.name} {username}
+                  psql -h {databaseHostname} {instance.name} {username}
                 </Badge>
               </p>
               <div className="w-15 w-sm-100">
