@@ -14,6 +14,9 @@ import ListPageHeading from '../../../components/lists/ListPageHeading';
 import ListPageListing from '../../../components/lists/ListPageListing';
 import { AddInstanceInterface, InstanceStatus } from '../../../types';
 
+const { REACT_APP_DB_HOSTNAME } = process.env;
+const hostname = REACT_APP_DB_HOSTNAME || '';
+
 interface PostgreSQLProps {}
 
 const PostgreSQL: React.FC<PostgreSQLProps> = () => {
@@ -91,6 +94,8 @@ const PostgreSQL: React.FC<PostgreSQLProps> = () => {
       <ListPageListing
         instances={instances}
         selectedInstances={selectedInstances}
+        username={profile ? profile.username : ''}
+        hostname={hostname}
         onToggle={handleOnToggle}
       />
     </>
