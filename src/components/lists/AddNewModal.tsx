@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, Label, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import { Button, FormText, Label, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { AddInstanceInterface } from '../../types';
+import { onlyLettersAndNumbers } from '../../utils/validators';
 
 export interface Props {
   isOpen: boolean;
@@ -15,10 +16,10 @@ export interface Props {
 const AddNewModal: React.FC<Props> = ({ isOpen, prefix, onClose, onSubmit, forbiddenNames }) => {
   const AddInstanceSchema = Yup.object().shape({
     name: Yup.string()
-      .min(3, 'Too Short!')
+      .min(4, 'Too Short!')
       .max(20, 'Too Long!')
       .required('Please enter a name')
-      .test('test', 'The name is already taken.', (name) => {
+      .test('test_unique', 'The name is already taken.', (name) => {
         if (name && forbiddenNames.find((forbiddenName) => forbiddenName === `${prefix}${name}`)) {
           return false;
         }
@@ -26,7 +27,10 @@ const AddNewModal: React.FC<Props> = ({ isOpen, prefix, onClose, onSubmit, forbi
           return false;
         }
         return true;
-      }),
+      })
+      .test('test_characters', 'Only letters and numbers', (name) =>
+        name ? onlyLettersAndNumbers(name) : false,
+      ),
   });
 
   return (
@@ -47,6 +51,7 @@ const AddNewModal: React.FC<Props> = ({ isOpen, prefix, onClose, onSubmit, forbi
               {errors.name && touched.name ? (
                 <div className="invalid-feedback d-block">{errors.name}</div>
               ) : null}
+              <FormText color="muted">At least 4 letters or numbers.</FormText>
             </ModalBody>
             <ModalFooter>
               <Button color="secondary" outline onClick={onClose}>
