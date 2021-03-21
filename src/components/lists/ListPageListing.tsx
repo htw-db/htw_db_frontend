@@ -41,11 +41,26 @@ const ListPageListing: React.FC<Props> = ({
                   </a>
                 </p>
               </div>
-              <p className="mb-1 text-muted text-small w-45 w-xs-100">
+              <div className="mb-1 text-muted w-45 w-xs-100">
                 <Badge color="light" pill>
                   psql -h {databaseHostname} {instance.name} {username}
                 </Badge>
-              </p>
+              </div>
+              <div className="w-15 w-sm-100 mb-0">
+                <button
+                  type="button"
+                  className="mb-2 btn btn-outline-secondary btn-xs"
+                  onClick={() => {
+                    const text = `psql -h ${databaseHostname} ${instance.name} ${username}`;
+                    navigator.clipboard.writeText(text);
+                  }}
+                >
+                  Copy
+                </button>
+                <a className="ml-2 mb-2 btn btn-outline-secondary btn-xs" href={phppgadminURL}>
+                  Open
+                </a>
+              </div>
               <div className="w-15 w-sm-100">
                 <BadgeStatus status={instance.status} />
               </div>
