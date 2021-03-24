@@ -3,7 +3,7 @@ import { Button, FormText, Label, Modal, ModalBody, ModalFooter, ModalHeader } f
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { AddInstanceInterface } from '../../types';
-import { onlyLettersAndNumbers, onlyLowercase } from '../../utils/validators';
+import { onlyLettersAndNumbers, isLowerCase } from '../../utils/validators';
 
 export interface Props {
   isOpen: boolean;
@@ -31,7 +31,7 @@ const AddNewModal: React.FC<Props> = ({ isOpen, prefix, onClose, onSubmit, forbi
       .test('test_characters', 'Only letters and numbers', (name) =>
         name ? onlyLettersAndNumbers(name) : false,
       )
-      .test('test_lowercase', 'Must be lowercase', (name) => (name ? onlyLowercase(name) : false)),
+      .test('test_lowercase', 'Only lowercase', (name) => (name ? isLowerCase(name) : false)),
   });
 
   return (
