@@ -4,6 +4,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
 import { LdapCredentialsInterface } from '../../types';
+import { isLowerCase, onlyLettersAndNumbers } from '../../utils/validators';
 
 export interface Props {
   loading: boolean;
@@ -15,7 +16,11 @@ const LoginSchema = Yup.object().shape({
   username: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
-    .required('Please enter your username'),
+    .required('Please enter your username')
+    .test('test_characters', 'Only letters and numbers', (name) =>
+      name ? onlyLettersAndNumbers(name) : false,
+    )
+    .test('test_lowercase', 'Only lowercase', (name) => (name ? isLowerCase(name) : false)),
   password: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
@@ -40,7 +45,7 @@ const LoginForm: React.FC<Props> = ({ loading, error, onSubmit }) => {
         <Form className="av-tooltip tooltip-label-bottom">
           <FormGroup className="form-group has-float-label">
             <Label>Username</Label>
-            <Field className="form-control" name="username" />
+            <Field className="form-control" name="username" placeholder="s000.." />
             {errors.username && touched.username ? (
               <div className="invalid-feedback d-block">{errors.username}</div>
             ) : null}

@@ -13,13 +13,11 @@ import 'react-perfect-scrollbar/dist/css/styles.css';
 const App = React.lazy(() => import('./App'));
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Suspense fallback={<div className="loading" />}>
-        <App />
-      </Suspense>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <Suspense fallback={<div className="loading" />}>
+      <App />
+    </Suspense>
+  </Provider>,
   document.getElementById('root'),
 );
 
