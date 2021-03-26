@@ -38,9 +38,6 @@ const Login: React.FC<LoginProps> = () => {
               <p className="white mb-0">Please use your university credentials to login.</p>
             </div>
             <div className="form-side">
-              <NavLink to="/" className="white">
-                <span className="logo-single" />
-              </NavLink>
               <CardTitle className="mb-4">Login</CardTitle>
               <LoginForm loading={isLoading} onSubmit={handleOnSubmit} error={error} />
             </div>
